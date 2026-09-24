@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title>MitoMon: ผจญภัยในเซลล์</title>
+
+<!-- ฟอนต์ภาษาไทย (Mali, Kanit) จาก Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;500;600;700&family=Mali:wght@400;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<div id="game-container"></div>
+
+<!-- (เฟส 8) มือถือแนวตั้ง: ขอให้หมุนจอเป็นแนวนอน (แสดงด้วย CSS เท่านั้น เกมยังทำงานอยู่ด้านหลัง) -->
+<div id="rotate-hint">
+  <div class="rotate-icon">📱↻</div>
+  <div>กรุณาหมุนจอเป็นแนวนอน<br>เพื่อเล่น MitoMon ได้เต็มจอ</div>
+</div>
+
+<!-- Phaser 3 (เวอร์ชันตายตัว 3.87.0 จาก cdnjs) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/phaser/3.87.0/phaser.min.js"></script>
+
+<!-- ==== ภาพที่ฝังไว้สำหรับการดับเบิลคลิกเปิด index.html (file://) ====
+     เบราว์เซอร์ไม่อนุญาตให้เกมโหลดไฟล์ภาพจากดิสก์ตรง ๆ จึงโหลดไฟล์รวมภาพ
+     js/assetBundle.js เฉพาะตอนเปิดแบบ file:// เท่านั้น
+     (เปิดผ่าน Live Server / GitHub Pages จะไม่โหลดไฟล์นี้ และใช้ assets/ ตามปกติ) -->
+<script>
+  if (window.location.protocol === 'file:') {
+    document.write('<script src="js/assetBundle.js"><\/script>');
+  }
+</script>
+
+<!-- ==== ค่าคอนฟิกเกม (ต้องโหลดก่อนไฟล์อื่นเสมอ) ==== -->
+<script src="js/config.js"></script>
+
+<!-- ==== ไฟล์ข้อมูล (data) ==== -->
+<script src="js/data/maps.js"></script>
+<script src="js/data/questions.js"></script>
+<script src="js/data/pets.js"></script>
+<script src="js/data/monsters.js"></script>
+<script src="js/data/items.js"></script>
+<script src="js/data/npc.js"></script>
+<script src="js/data/badges.js"></script>
+
+<!-- ==== ตัวช่วย (utils) ==== -->
+<script src="js/utils/TextUtil.js"></script>
+<script src="js/utils/Device.js"></script>
+
+<!-- ==== ระบบ (systems) ==== -->
+<script src="js/systems/SaveSystem.js"></script>
+<script src="js/systems/QuizSystem.js"></script>
+<script src="js/systems/PetSystem.js"></script>
+<script src="js/systems/BattleSystem.js"></script>
+<script src="js/systems/PetFollower.js"></script>
+<script src="js/systems/InventorySystem.js"></script>
+<script src="js/systems/SoundFx.js"></script>
+<script src="js/systems/AudioSystem.js"></script>
+<script src="js/systems/PlayTimeSystem.js"></script>
+<script src="js/systems/ProgressionFx.js"></script>
+<script src="js/systems/StatsSystem.js"></script>
+<script src="js/systems/BadgeSystem.js"></script>
+<script src="js/systems/LeaderboardSystem.js"></script>
+
+<!-- ==== ฉาก (scenes) เรียงลำดับ Boot -> Title -> Hatch -> World -> Battle -> UI -> QuizPanel -> Inventory ==== -->
+<script src="js/scenes/BootScene.js"></script>
+<script src="js/scenes/TitleScene.js"></script>
+<script src="js/scenes/HatchScene.js"></script>
+<script src="js/scenes/WorldScene.js"></script>
+<script src="js/scenes/BattleScene.js"></script>
+<script src="js/scenes/UIScene.js"></script>
+<script src="js/scenes/QuizPanel.js"></script>
+<script src="js/scenes/InventoryScene.js"></script>
+<script src="js/scenes/LevelUpScene.js"></script>
+<script src="js/scenes/EvolutionScene.js"></script>
+<script src="js/scenes/MaxLevelScene.js"></script>
+<script src="js/scenes/DialogScene.js"></script>
+<script src="js/scenes/OverlayScene.js"></script>
+<script src="js/scenes/CollectionScene.js"></script>
+<script src="js/scenes/ReportScene.js"></script>
+<script src="js/scenes/LeaderboardScene.js"></script>
+<script src="js/scenes/TeacherScene.js"></script>
+<script src="js/scenes/TutorialScene.js"></script>
+
+<!-- ==== จุดเริ่มต้นเกม ==== -->
+<script src="js/main.js"></script>
+
+</body>
+</html>
